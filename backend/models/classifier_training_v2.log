@@ -1,0 +1,43 @@
+Training on mps
+  train: 2816 labelled images
+  val  : 810 labelled images
+  test : 374 labelled images
+
+  negatives: 2681 undamaged photographs from data/CarDD_COCO/negatives
+    train: +1876 -> 4692 total
+    val  : +536 -> 1346 total
+    test : +269 -> 643 total
+Trainable parameters: 9,296,100
+Positive weights: {'dent': 2.28, 'scratch': 1.89, 'crack': 6.62, 'glass_shatter': 5.93, 'lamp_broken': 5.77, 'tire_flat': 12.94}
+Epoch 01/20 | train 0.6219 | val 0.4112 | 110s  <- best (saved)
+Epoch 02/20 | train 0.3792 | val 0.3428 | 136s  <- best (saved)
+Epoch 03/20 | train 0.3229 | val 0.3204 | 127s  <- best (saved)
+Epoch 04/20 | train 0.2964 | val 0.3204 | 132s  <- best (saved)
+Epoch 05/20 | train 0.2643 | val 0.3004 | 158s  <- best (saved)
+Epoch 06/20 | train 0.2505 | val 0.2839 | 166s  <- best (saved)
+Epoch 07/20 | train 0.2349 | val 0.2909 | 199s
+Epoch 08/20 | train 0.2111 | val 0.2912 | 122s
+Epoch 09/20 | train 0.1978 | val 0.3059 | 126s
+Epoch 10/20 | train 0.1843 | val 0.3043 | 124s
+Epoch 11/20 | train 0.1731 | val 0.2987 | 117s
+
+Validation loss has not improved for 5 epochs. Stopping early at epoch 11; best was epoch 6 (val 0.2839).
+Training longer would only overfit further - the trend is the result, not a failure.
+
+Restored the best checkpoint: epoch 6, val loss 0.2839
+
+class            threshold    F1@0.5   F1@best       AP      AUC
+dent                0.6867    0.8011    0.8213   0.8962   0.9621
+scratch             0.6408    0.7963    0.8090   0.8883   0.9538
+crack               0.8828    0.4255    0.5116   0.5596   0.9226
+glass_shatter       0.9548    0.9103    0.9559   0.9798   0.9868
+lamp_broken         0.7876    0.6667    0.7000   0.7557   0.9611
+tire_flat           0.5390    0.8571    0.8529   0.9385   0.9947
+
+Macro F1 (tuned thresholds): 0.7751
+
+Saved checkpoint to models/car_damage_classifier_v2.pth
+Saved training metrics to models/car_damage_classifier_v2.training.json
+
+Next: verify it against the held-out test split through the API's own code path:
+    python training/evaluate.py --data-root data/CarDD_COCO

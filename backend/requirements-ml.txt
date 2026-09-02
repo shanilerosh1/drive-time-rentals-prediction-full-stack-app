@@ -1,0 +1,18 @@
+# ---- Optional: real inference and model training -------------------------
+# Install when you want the system to actually detect damage:
+#     pip install -r requirements-ml.txt
+# The API auto-detects trained weights and switches off the placeholder.
+-r requirements.txt
+
+# Deliberately not pinned to an exact version: the wheel available depends on
+# your Python version and platform (torch 2.5 has no CPython 3.13 build, for
+# instance). These floors cover Python 3.11-3.13 on macOS, Linux and Windows,
+# and pick up CUDA or Apple-Silicon MPS automatically where present.
+torch>=2.6
+torchvision>=0.21
+
+# Threshold tuning and the evaluation metrics.
+scikit-learn>=1.4
+
+# Only needed for the YOLOv8 detection backend (dissertation Phase 2).
+# ultralytics>=8.3

@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# Application data (regenerated on first run)
+backend/data/
+backend/storage/
+backend/.env
+
+# Model weights are large and not source
+backend/models/*.pth
+backend/models/*.pt
+backend/models/*.onnx
+
+# Datasets and model artefacts - large, regenerable, not source.
+# Recreate with:  training/download_dataset.py, training/extract_negatives.py,
+#                 training/make_verify_pack.py
+backend/data/CarDD_COCO/
+backend/data/negatives_raw/
+backend/data/verify_samples/
+backend/models/*.training.json
+backend/models/evaluation.json
+backend/models/evaluation.pdf
+backend/models/backup_positives_only/
+
+
+# Node / Angular
+node_modules/
+frontend/dist/
+frontend/.angular/
+
+# OS / editor
+.DS_Store
+.idea/
+*.swp
+
+# Model weights anywhere in the tree - large and regenerable.
+# (The patterns above only match backend/models/ directly, not nested runs.)
+**/*.pt
+**/*.pth
+**/*.onnx
+
+# Ultralytics run artefacts: debug mosaics and raw console logs.
+# results.csv and args.yaml ARE kept - they are the actual benchmark results.
+backend/models/detectors/**/train_batch*.jpg
+backend/models/detectors/**/labels*.jpg
+backend/models/detectors/**/*.log

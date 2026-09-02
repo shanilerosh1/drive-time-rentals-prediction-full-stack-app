@@ -1,0 +1,13 @@
+# Keep line endings correct for each platform's launcher scripts.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.sh  text eol=lf
+
+# Everything else: normalise to LF in the repository.
+* text=auto
+*.png binary
+*.jpg binary
+*.pdf binary
+*.ico binary
+*.pth binary
+*.pt  binary

@@ -1,0 +1,52 @@
+from app.schemas.common import Message, Page, PageParams
+from app.schemas.inspection import (
+    AnalyseRequest,
+    AnalyseResponse,
+    BoundingBoxRead,
+    ClassFinding,
+    ComparisonClassRow,
+    ComparisonRead,
+    DashboardStats,
+    DetectionRead,
+    InspectionCreate,
+    InspectionImageRead,
+    InspectionRead,
+    InspectionSummary,
+    InspectionUpdate,
+)
+from app.schemas.user import (
+    LoginRequest,
+    Token,
+    UserCreate,
+    UserRead,
+    UserUpdate,
+)
+from app.schemas.vehicle import VehicleCreate, VehicleRead, VehicleUpdate, VehicleWithStats
+
+__all__ = [
+    "AnalyseRequest",
+    "AnalyseResponse",
+    "BoundingBoxRead",
+    "ClassFinding",
+    "ComparisonClassRow",
+    "ComparisonRead",
+    "DashboardStats",
+    "DetectionRead",
+    "InspectionCreate",
+    "InspectionImageRead",
+    "InspectionRead",
+    "InspectionSummary",
+    "InspectionUpdate",
+    "LoginRequest",
+    "Message",
+    "Page",
+    "PageParams",
+    "Token",
+    "UserCreate",
+    "UserRead",
+    "UserUpdate",
+    "VehicleCreate",
+    "VehicleRead",
+    "VehicleUpdate",
+    "VehicleWithStats",
+]

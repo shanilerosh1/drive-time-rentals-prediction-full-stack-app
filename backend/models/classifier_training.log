@@ -1,0 +1,39 @@
+Training on mps
+  train: 2816 labelled images
+  val  : 810 labelled images
+  test : 374 labelled images
+Trainable parameters: 9,296,100
+Positive weights: {'dent': 2.28, 'scratch': 1.89, 'crack': 6.62, 'glass_shatter': 5.93, 'lamp_broken': 5.77, 'tire_flat': 12.94}
+Epoch 01/20 | train 0.9278 | val 0.6573 | 128s  <- best (saved)
+Epoch 02/20 | train 0.6035 | val 0.5510 | 101s  <- best (saved)
+Epoch 03/20 | train 0.5232 | val 0.5137 | 104s  <- best (saved)
+Epoch 04/20 | train 0.4726 | val 0.4889 | 89s  <- best (saved)
+Epoch 05/20 | train 0.4294 | val 0.4861 | 100s  <- best (saved)
+Epoch 06/20 | train 0.4058 | val 0.4711 | 117s  <- best (saved)
+Epoch 07/20 | train 0.3874 | val 0.4613 | 113s  <- best (saved)
+Epoch 08/20 | train 0.3688 | val 0.4632 | 101s
+Epoch 09/20 | train 0.3384 | val 0.4709 | 108s
+Epoch 10/20 | train 0.3212 | val 0.4848 | 89s
+Epoch 11/20 | train 0.3093 | val 0.5038 | 96s
+Epoch 12/20 | train 0.2858 | val 0.5128 | 114s
+
+Validation loss has not improved for 5 epochs. Stopping early at epoch 12; best was epoch 7 (val 0.4613).
+Training longer would only overfit further - the trend is the result, not a failure.
+
+Restored the best checkpoint: epoch 7, val loss 0.4613
+
+class            threshold    F1@0.5   F1@best       AP      AUC
+dent                0.6065    0.8184    0.8246   0.9006   0.9232
+scratch             0.5696    0.8076    0.8139   0.8861   0.8934
+crack               0.8355    0.4636    0.5316   0.5403   0.8548
+glass_shatter       0.9540    0.9452    0.9481   0.9874   0.9958
+lamp_broken         0.8826    0.6433    0.6917   0.7634   0.9181
+tire_flat           0.9010    0.8116    0.8814   0.9405   0.9915
+
+Macro F1 (tuned thresholds): 0.7819
+
+Saved checkpoint to models/car_damage_classifier.pth
+Saved training metrics to models/car_damage_classifier.training.json
+
+Next: verify it against the held-out test split through the API's own code path:
+    python training/evaluate.py --data-root data/CarDD_COCO
